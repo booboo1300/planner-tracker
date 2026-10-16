@@ -23,8 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-Ce7VKGFf.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DMgqcQk8.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-ekHMJJ1g.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DsBKUFrZ.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -102,46 +102,48 @@
           </div>
         </form>
 
-        <section class="card plant-card" aria-labelledby="plant-heading">
-          <div id="plant-art" class="plant-art" role="img"></div>
-          <div class="plant-text">
-            <h2 id="plant-heading">🌱 Your plant</h2>
-            <p id="plant-caption" class="plant-caption" aria-live="polite"></p>
-            <p class="plant-hint">It grows a leaf every time you finish an assignment, and blooms every 10.</p>
-          </div>
-        </section>
+        <div class="study-row">
+          <section class="card plant-card" aria-labelledby="plant-heading">
+            <div id="plant-art" class="plant-art" role="img"></div>
+            <div class="plant-text">
+              <h2 id="plant-heading">🌱 Your plant</h2>
+              <p id="plant-caption" class="plant-caption" aria-live="polite"></p>
+              <p class="plant-hint">It grows a leaf every time you finish an assignment, and blooms every 10.</p>
+            </div>
+          </section>
 
-        <section class="card timer-card" aria-labelledby="timer-heading">
-          <div class="timer-top">
-            <h2 id="timer-heading">⏱️ Focus timer</h2>
-            <fieldset class="timer-modes">
-              <legend class="visually-hidden">Timer mode</legend>
-              <label class="timer-mode">
-                <input type="radio" name="timer-mode" value="focus" checked />
-                <span>Focus · 25 min</span>
-              </label>
-              <label class="timer-mode">
-                <input type="radio" name="timer-mode" value="break" />
-                <span>Break · 5 min</span>
-              </label>
-            </fieldset>
-          </div>
-          <p id="timer-clock" class="timer-clock" role="timer" aria-live="off">25:00</p>
-          <div class="timer-controls">
-            <button id="timer-start" type="button" class="add-button">Start</button>
-            <button id="timer-reset" type="button" class="secondary-button">Reset</button>
-          </div>
-          <label class="field timer-assignment-field">
-            <span>Working on</span>
-            <select id="timer-assignment"></select>
-          </label>
-          <p id="timer-message" class="timer-message" role="status" aria-live="polite"></p>
-          <p id="timer-sessions" class="timer-sessions"></p>
-          <p class="timer-notify">
-            <button id="notify-button" type="button" class="text-button" hidden>🔔 Turn on notifications</button>
-            <span id="notify-status"></span>
-          </p>
-        </section>
+          <section class="card timer-card" aria-labelledby="timer-heading">
+            <div class="timer-top">
+              <h2 id="timer-heading">⏱️ Focus timer</h2>
+              <fieldset class="timer-modes">
+                <legend class="visually-hidden">Timer mode</legend>
+                <label class="timer-mode">
+                  <input type="radio" name="timer-mode" value="focus" checked />
+                  <span>Focus · 25 min</span>
+                </label>
+                <label class="timer-mode">
+                  <input type="radio" name="timer-mode" value="break" />
+                  <span>Break · 5 min</span>
+                </label>
+              </fieldset>
+            </div>
+            <p id="timer-clock" class="timer-clock" role="timer" aria-live="off">25:00</p>
+            <div class="timer-controls">
+              <button id="timer-start" type="button" class="add-button">Start</button>
+              <button id="timer-reset" type="button" class="secondary-button">Reset</button>
+            </div>
+            <label class="field timer-assignment-field">
+              <span>Working on</span>
+              <select id="timer-assignment"></select>
+            </label>
+            <p id="timer-message" class="timer-message" role="status" aria-live="polite"></p>
+            <p id="timer-sessions" class="timer-sessions"></p>
+            <p class="timer-notify">
+              <button id="notify-button" type="button" class="text-button" hidden>🔔 Turn on notifications</button>
+              <span id="notify-status"></span>
+            </p>
+          </section>
+        </div>
 
         <section aria-labelledby="list-heading">
           <h2 id="list-heading" class="list-heading">Upcoming</h2>
