@@ -12,9 +12,36 @@
         try {
           choice = localStorage.getItem("planner-tracker.theme") || "system";
         } catch (error) {}
+        var root = document.documentElement;
         var fixed = choice === "light" || choice === "sage" || choice === "dark";
         var systemDark = matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.dataset.theme = fixed ? choice : systemDark ? "dark" : "light";
+        root.dataset.theme = fixed ? choice : systemDark ? "dark" : "light";
+        if (choice !== "custom") return;
+
+        // Custom colors: same rules as src/customColors.ts (luminance, dark background, button text).
+        var colors = null;
+        try {
+          colors = JSON.parse(localStorage.getItem("planner-tracker.custom-colors"));
+        } catch (error) {}
+        if (!colors || !/^#[0-9a-f]{6}$/.test(colors.bg) || !/^#[0-9a-f]{6}$/.test(colors.accent)) return;
+        function luminance(hex) {
+          return [1, 3, 5].reduce(function (sum, start, index) {
+            var channel = parseInt(hex.slice(start, start + 2), 16) / 255;
+            var linear = channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+            return sum + linear * [0.2126, 0.7152, 0.0722][index];
+          }, 0);
+        }
+        var accentLight = luminance(colors.accent);
+        var onWhite = 1.05 / (accentLight + 0.05);
+        var onDark = (accentLight + 0.05) / (luminance("#16221b") + 0.05);
+        root.style.setProperty("--bg", colors.bg);
+        root.style.setProperty("--card", colors.card);
+        root.style.setProperty("--text", colors.text);
+        root.style.setProperty("--accent-strong", colors.accent);
+        root.style.setProperty("--leaf", colors.leaf);
+        root.style.setProperty("--accent-text", onWhite >= onDark ? "#ffffff" : "#16221b");
+        root.dataset.custom = "true";
+        root.dataset.theme = luminance(colors.bg) < 0.18 ? "dark" : "light";
       })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-DNX6Y27J.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-rrBKc51W.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-DxkcLe3f.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DQsrnZgG.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -58,6 +85,10 @@
           <input type="radio" name="theme" value="system" />
           <span><span aria-hidden="true">💻</span> System</span>
         </label>
+        <label class="theme-option" title="Pick your own colors">
+          <input type="radio" name="theme" value="custom" />
+          <span><span aria-hidden="true">🎨</span> Custom</span>
+        </label>
       </fieldset>
       <header class="page-header">
         <svg class="sprig sprig-left" aria-hidden="true"><use href="#leaf-sprig" /></svg>
@@ -67,6 +98,21 @@
         </div>
         <svg class="sprig" aria-hidden="true"><use href="#leaf-sprig" /></svg>
       </header>
+
+      <details id="custom-colors" class="card custom-colors" open hidden>
+        <summary><h2>🎨 Your colors</h2></summary>
+        <p class="custom-colors-intro">
+          Click a swatch to pick a color, or type a hex code like <code>#7fb3d5</code>. Changes show right away.
+        </p>
+        <div id="custom-color-fields" class="custom-color-fields"></div>
+        <p id="custom-color-warning" class="custom-color-warning" role="status" aria-live="polite"></p>
+        <div class="custom-presets">
+          <span>Start from:</span>
+          <button type="button" class="goal-chip" data-preset="light">☀️ Light</button>
+          <button type="button" class="goal-chip" data-preset="sage">🌿 Sage</button>
+          <button type="button" class="goal-chip" data-preset="dark">🌙 Dark</button>
+        </div>
+      </details>
 
       <p id="storage-error" class="storage-error" hidden>
         Your browser is blocking saved data, so nothing will be kept after you close this page.
