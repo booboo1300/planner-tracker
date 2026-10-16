@@ -23,8 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-DfMx0-Ih.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DABc5wbz.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-Bv0iFkEJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-rrBKc51W.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -76,6 +76,7 @@
       <nav class="tabs" role="tablist" aria-label="Views">
         <button id="list-tab" class="tab" type="button" role="tab" aria-controls="list-view">📋 List</button>
         <button id="calendar-tab" class="tab" type="button" role="tab" aria-controls="calendar-view">📅 Calendar</button>
+        <button id="grades-tab" class="tab" type="button" role="tab" aria-controls="grades-view">🎓 Grades</button>
       </nav>
 
       <div id="list-view" role="tabpanel" aria-labelledby="list-tab">
@@ -171,41 +172,6 @@
           </div>
         </section>
 
-        <section id="averages-section" class="averages-section" aria-labelledby="averages-heading" hidden>
-          <h2 id="averages-heading" class="list-heading">Class averages</h2>
-          <ul id="averages-list" class="card averages-list"></ul>
-          <p class="averages-hint">Every graded assignment counts equally, so this is an estimate of your class grade.</p>
-        </section>
-
-        <section class="card goal-card" aria-labelledby="goal-heading">
-          <h2 id="goal-heading">🎯 Grade goal calculator</h2>
-          <p class="goal-intro">What do you need on the final to reach your goal?</p>
-          <div class="goal-fields">
-            <label class="field">
-              <span>Class</span>
-              <select id="goal-class"></select>
-            </label>
-            <label class="field">
-              <span>Current grade (%)</span>
-              <input id="goal-current" type="number" inputmode="decimal" min="0" max="100" step="0.1" placeholder="e.g. 88" />
-            </label>
-            <label class="field">
-              <span>Final is worth (%)</span>
-              <input id="goal-weight" type="number" inputmode="decimal" min="1" max="100" step="1" value="25" />
-            </label>
-            <div class="field goal-target-field">
-              <label for="goal-target">Goal (%)</label>
-              <div class="goal-target-row">
-                <button type="button" class="goal-chip" data-goal="90">A · 90</button>
-                <button type="button" class="goal-chip" data-goal="80">B · 80</button>
-                <button type="button" class="goal-chip" data-goal="70">C · 70</button>
-                <input id="goal-target" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="90" />
-              </div>
-            </div>
-          </div>
-          <p id="goal-result" class="goal-result" role="status" aria-live="polite"></p>
-        </section>
-
         <section id="done-section" class="done-section" aria-labelledby="done-heading" hidden>
           <h2 id="done-heading" class="list-heading">Done</h2>
           <ul id="done-list" class="assignment-list"></ul>
@@ -285,6 +251,74 @@
               <button type="submit" class="add-button">Add event</button>
             </div>
           </form>
+        </section>
+      </div>
+
+      <div id="grades-view" role="tabpanel" aria-labelledby="grades-tab" hidden>
+        <section class="averages-section" aria-labelledby="averages-heading">
+          <h2 id="averages-heading" class="list-heading">Class averages</h2>
+          <ul id="averages-list" class="card averages-list"></ul>
+          <p id="averages-hint" class="averages-hint">
+            Every graded assignment counts equally, so this is an estimate of your class grade.
+          </p>
+          <p id="averages-empty" class="card averages-empty">
+            No grades yet. Check off an assignment on the List tab and add its grade to see your class averages here.
+          </p>
+        </section>
+
+        <section class="card goal-card" aria-labelledby="goal-heading">
+          <h2 id="goal-heading">🎯 Grade goal calculator</h2>
+          <p class="goal-intro">What do you need on the final to reach your goal?</p>
+          <div class="goal-fields">
+            <label class="field">
+              <span>Class</span>
+              <select id="goal-class"></select>
+            </label>
+            <label class="field">
+              <span>Current grade (%)</span>
+              <input id="goal-current" type="number" inputmode="decimal" min="0" max="100" step="0.1" placeholder="e.g. 88" />
+            </label>
+            <label class="field">
+              <span>Final is worth (%)</span>
+              <input id="goal-weight" type="number" inputmode="decimal" min="1" max="100" step="1" value="25" />
+            </label>
+            <div class="field goal-target-field">
+              <label for="goal-target">Goal (%)</label>
+              <div class="goal-target-row">
+                <button type="button" class="goal-chip" data-goal="90">A · 90</button>
+                <button type="button" class="goal-chip" data-goal="80">B · 80</button>
+                <button type="button" class="goal-chip" data-goal="70">C · 70</button>
+                <input id="goal-target" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="90" />
+              </div>
+            </div>
+          </div>
+          <p id="goal-result" class="goal-result" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="card gpa-card" aria-labelledby="gpa-heading">
+          <h2 id="gpa-heading">🎓 GPA calculator</h2>
+          <p class="goal-intro">Credit hours and a grade for each class. Letters are suggested from your averages; change them to match your syllabus.</p>
+          <div class="gpa-header" aria-hidden="true"><span>Class</span><span>Credits</span><span>Grade</span><span></span></div>
+          <ul id="gpa-rows" class="gpa-rows"></ul>
+          <div class="gpa-actions">
+            <button id="gpa-add" type="button" class="secondary-button">+ Add class</button>
+            <button id="gpa-fill" type="button" class="text-button">Add my tracked classes</button>
+          </div>
+          <p id="gpa-result" class="gpa-result" role="status" aria-live="polite"></p>
+          <details class="gpa-cumulative-box">
+            <summary>Include my GPA so far</summary>
+            <div class="goal-fields gpa-prior-fields">
+              <label class="field">
+                <span>GPA so far</span>
+                <input id="gpa-prior" type="number" inputmode="decimal" min="0" max="4" step="0.01" placeholder="e.g. 3.40" />
+              </label>
+              <label class="field">
+                <span>Credit hours so far</span>
+                <input id="gpa-prior-credits" type="number" inputmode="decimal" min="0" step="1" placeholder="e.g. 30" />
+              </label>
+            </div>
+            <p id="gpa-cumulative" class="gpa-cumulative" aria-live="polite"></p>
+          </details>
         </section>
       </div>
 
