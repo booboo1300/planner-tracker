@@ -10,8 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-Ce_dYJWl.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-ZeuI_NQQ.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-Bt3r2P4y.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BX5nOEcy.css">
   </head>
   <body>
     <main class="page">
@@ -151,6 +151,24 @@
           </form>
         </section>
       </div>
+
+      <section class="card backup-card" aria-labelledby="backup-heading">
+        <div class="backup-row">
+          <div class="backup-text">
+            <h2 id="backup-heading">💾 Backup</h2>
+            <p>
+              Your data is saved only in this browser. Export a backup file now and then, and import it to
+              restore your data or move it to another device.
+            </p>
+          </div>
+          <div class="backup-actions">
+            <button id="export-button" type="button" class="secondary-button">Export</button>
+            <button id="import-button" type="button" class="secondary-button">Import</button>
+            <input id="import-input" type="file" accept=".json,application/json" hidden />
+          </div>
+        </div>
+        <p id="backup-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
     </main>
   </body>
 </html>
