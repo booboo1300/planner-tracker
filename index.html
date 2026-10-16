@@ -23,8 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-ekHMJJ1g.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DsBKUFrZ.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-DfMx0-Ih.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DABc5wbz.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -79,6 +79,22 @@
       </nav>
 
       <div id="list-view" role="tabpanel" aria-labelledby="list-tab">
+        <section class="card week-card" aria-labelledby="week-heading">
+          <h2 id="week-heading">📅 This week <span id="week-dates" class="week-dates"></span></h2>
+          <p id="week-progress-text" class="week-progress-text"></p>
+          <div
+            id="week-progress"
+            class="week-progress"
+            role="progressbar"
+            aria-labelledby="week-progress-text"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div id="week-progress-fill" class="week-progress-fill"></div>
+          </div>
+          <ul id="week-stats" class="week-stats"></ul>
+        </section>
+
         <form id="add-form" class="card add-form" novalidate>
           <h2>Add an assignment</h2>
           <div class="fields">
@@ -159,6 +175,35 @@
           <h2 id="averages-heading" class="list-heading">Class averages</h2>
           <ul id="averages-list" class="card averages-list"></ul>
           <p class="averages-hint">Every graded assignment counts equally, so this is an estimate of your class grade.</p>
+        </section>
+
+        <section class="card goal-card" aria-labelledby="goal-heading">
+          <h2 id="goal-heading">🎯 Grade goal calculator</h2>
+          <p class="goal-intro">What do you need on the final to reach your goal?</p>
+          <div class="goal-fields">
+            <label class="field">
+              <span>Class</span>
+              <select id="goal-class"></select>
+            </label>
+            <label class="field">
+              <span>Current grade (%)</span>
+              <input id="goal-current" type="number" inputmode="decimal" min="0" max="100" step="0.1" placeholder="e.g. 88" />
+            </label>
+            <label class="field">
+              <span>Final is worth (%)</span>
+              <input id="goal-weight" type="number" inputmode="decimal" min="1" max="100" step="1" value="25" />
+            </label>
+            <div class="field goal-target-field">
+              <label for="goal-target">Goal (%)</label>
+              <div class="goal-target-row">
+                <button type="button" class="goal-chip" data-goal="90">A · 90</button>
+                <button type="button" class="goal-chip" data-goal="80">B · 80</button>
+                <button type="button" class="goal-chip" data-goal="70">C · 70</button>
+                <input id="goal-target" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="90" />
+              </div>
+            </div>
+          </div>
+          <p id="goal-result" class="goal-result" role="status" aria-live="polite"></p>
         </section>
 
         <section id="done-section" class="done-section" aria-labelledby="done-heading" hidden>
