@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planner &amp; Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/planner-tracker/assets/index-Jdj5ZjLx.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-C2PC-vXp.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <h1>Planner &amp; Tracker</h1>
+        <p class="subtitle">Your deadlines and plans, all in one place.</p>
+      </header>
+
+      <p id="storage-error" class="storage-error" hidden>
+        Your browser is blocking saved data, so nothing will be kept after you close this page.
+        Try turning off private browsing.
+      </p>
+
+      <nav class="tabs" role="tablist" aria-label="Views">
+        <button id="list-tab" class="tab" type="button" role="tab" aria-controls="list-view">📋 List</button>
+        <button id="calendar-tab" class="tab" type="button" role="tab" aria-controls="calendar-view">📅 Calendar</button>
+      </nav>
+
+      <div id="list-view" role="tabpanel" aria-labelledby="list-tab">
+        <form id="add-form" class="card add-form" novalidate>
+          <h2>Add an assignment</h2>
+          <div class="fields">
+            <label class="field field-title">
+              <span>Assignment</span>
+              <input id="title-input" type="text" placeholder="e.g. MP1" maxlength="100" />
+            </label>
+            <label class="field">
+              <span>Class</span>
+              <input id="course-input" type="text" placeholder="e.g. CS 124" maxlength="40" list="course-options" />
+              <datalist id="course-options"></datalist>
+            </label>
+            <label class="field">
+              <span>Due date</span>
+              <input id="due-input" type="date" />
+            </label>
+          </div>
+          <div class="form-footer">
+            <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+            <button type="submit" class="add-button">Add assignment</button>
+          </div>
+        </form>
+
+        <section aria-labelledby="list-heading">
+          <h2 id="list-heading" class="list-heading">Upcoming</h2>
+          <ul id="assignment-list" class="assignment-list"></ul>
+          <div id="empty-state" class="card empty-state" hidden>
+            <p id="empty-emoji" class="empty-emoji" aria-hidden="true">🌸</p>
+            <p><strong id="empty-title">Nothing due yet.</strong></p>
+            <p id="empty-detail">Add your first assignment above and it'll show up here.</p>
+          </div>
+        </section>
+
+        <section id="averages-section" class="averages-section" aria-labelledby="averages-heading" hidden>
+          <h2 id="averages-heading" class="list-heading">Class averages</h2>
+          <ul id="averages-list" class="card averages-list"></ul>
+          <p class="averages-hint">Every graded assignment counts equally, so this is an estimate of your class grade.</p>
+        </section>
+
+        <section id="done-section" class="done-section" aria-labelledby="done-heading" hidden>
+          <h2 id="done-heading" class="list-heading">Done</h2>
+          <ul id="done-list" class="assignment-list"></ul>
+        </section>
+      </div>
+
+      <div id="calendar-view" role="tabpanel" aria-labelledby="calendar-tab" hidden>
+        <section class="card calendar" aria-labelledby="month-label">
+          <div class="calendar-header">
+            <h2 id="month-label" class="month-label"></h2>
+            <button id="today-button" class="today-button" type="button">Today</button>
+            <button id="prev-month" class="month-nav" type="button" aria-label="Previous month">‹</button>
+            <button id="next-month" class="month-nav" type="button" aria-label="Next month">›</button>
+          </div>
+          <div class="weekday-row" aria-hidden="true">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div id="calendar-grid" class="calendar-grid"></div>
+          <div class="calendar-legend" aria-hidden="true">
+            <span><span class="legend-dot event-personal"></span>Personal</span>
+            <span><span class="legend-dot event-school"></span>School</span>
+            <span>📌 Assignment due</span>
+          </div>
+        </section>
+
+        <section class="card day-panel" aria-labelledby="day-heading">
+          <h2 id="day-heading" class="day-heading"></h2>
+          <ul id="day-items" class="day-items"></ul>
+          <p id="day-empty" class="day-empty">Nothing planned yet. Add an event below.</p>
+
+          <form id="event-form" class="event-form" novalidate>
+            <div class="event-fields">
+              <label class="field event-title-field">
+                <span>Event</span>
+                <input id="event-title-input" type="text" placeholder="e.g. Dinner with friends" maxlength="100" />
+              </label>
+              <label class="field">
+                <span>Time (optional)</span>
+                <input id="event-time-input" type="time" />
+              </label>
+              <fieldset class="field type-picker">
+                <legend>Type</legend>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="personal" checked />
+                  <span class="pill event-personal">Personal</span>
+                </label>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="school" />
+                  <span class="pill event-school">School</span>
+                </label>
+              </fieldset>
+              <label class="field">
+                <span>Repeats</span>
+                <select id="event-repeat-select">
+                  <option value="none">Doesn't repeat</option>
+                  <option value="daily">Every day</option>
+                  <option value="weekly">Every week on…</option>
+                </select>
+              </label>
+              <label id="until-field" class="field" hidden>
+                <span>Until (optional)</span>
+                <input id="event-until-input" type="date" />
+              </label>
+              <fieldset id="weekday-picker" class="field weekday-picker" hidden>
+                <legend>On these days</legend>
+                <label class="weekday-option"><input type="checkbox" value="0" /><span>Sun</span></label>
+                <label class="weekday-option"><input type="checkbox" value="1" /><span>Mon</span></label>
+                <label class="weekday-option"><input type="checkbox" value="2" /><span>Tue</span></label>
+                <label class="weekday-option"><input type="checkbox" value="3" /><span>Wed</span></label>
+                <label class="weekday-option"><input type="checkbox" value="4" /><span>Thu</span></label>
+                <label class="weekday-option"><input type="checkbox" value="5" /><span>Fri</span></label>
+                <label class="weekday-option"><input type="checkbox" value="6" /><span>Sat</span></label>
+              </fieldset>
+            </div>
+            <div class="form-footer">
+              <p id="event-message" class="form-message" role="status" aria-live="polite"></p>
+              <button type="submit" class="add-button">Add event</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
