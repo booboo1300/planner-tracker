@@ -10,14 +10,30 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-Bt3r2P4y.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BX5nOEcy.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-AhhrdeD3.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BIldHX1p.css">
   </head>
   <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="leaf-sprig" viewBox="0 0 140 90">
+        <path style="fill: none; stroke: var(--leaf-stem); stroke-width: 2.5; stroke-linecap: round" d="M6 82 C 40 76, 82 58, 132 14" />
+        <path style="fill: var(--leaf)" d="M30 76 C 22 60, 26 46, 36 40 C 44 52, 42 66, 30 76 Z" />
+        <path style="fill: var(--leaf-deep)" d="M34 77 C 48 86, 62 86, 70 78 C 60 68, 46 70, 34 77 Z" />
+        <path style="fill: var(--leaf-deep)" d="M62 64 C 54 46, 60 32, 72 26 C 80 40, 76 54, 62 64 Z" />
+        <path style="fill: var(--leaf)" d="M66 64 C 82 72, 96 70, 102 60 C 92 50, 78 54, 66 64 Z" />
+        <path style="fill: var(--leaf)" d="M94 44 C 90 28, 96 16, 108 12 C 114 26, 108 38, 94 44 Z" />
+        <path style="fill: var(--leaf-deep)" d="M98 43 C 112 46, 124 42, 128 32 C 118 26, 106 30, 98 43 Z" />
+        <path style="fill: var(--leaf)" d="M126 18 C 128 8, 134 2, 140 2 C 140 10, 134 16, 126 18 Z" />
+      </symbol>
+    </svg>
     <main class="page">
       <header class="page-header">
-        <h1>Planner &amp; Tracker</h1>
-        <p class="subtitle">Your deadlines and plans, all in one place.</p>
+        <svg class="sprig sprig-left" aria-hidden="true"><use href="#leaf-sprig" /></svg>
+        <div>
+          <h1>Planner &amp; Tracker</h1>
+          <p class="subtitle">Your deadlines and plans, all in one place.</p>
+        </div>
+        <svg class="sprig" aria-hidden="true"><use href="#leaf-sprig" /></svg>
       </header>
 
       <p id="storage-error" class="storage-error" hidden>
@@ -58,7 +74,7 @@
           <h2 id="list-heading" class="list-heading">Upcoming</h2>
           <ul id="assignment-list" class="assignment-list"></ul>
           <div id="empty-state" class="card empty-state" hidden>
-            <p id="empty-emoji" class="empty-emoji" aria-hidden="true">🌸</p>
+            <p id="empty-emoji" class="empty-emoji" aria-hidden="true">🌿</p>
             <p><strong id="empty-title">Nothing due yet.</strong></p>
             <p id="empty-detail">Add your first assignment above and it'll show up here.</p>
           </div>
