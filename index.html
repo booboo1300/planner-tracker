@@ -4,14 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Planner &amp; Tracker</title>
+    <script>
+      // Applies the saved Light/Dark/System choice before the page draws, so it never flashes the
+      // wrong colors. src/theme.ts takes over once the app loads; keep the two in sync.
+      (function () {
+        var choice = "system";
+        try {
+          choice = localStorage.getItem("planner-tracker.theme") || "system";
+        } catch (error) {}
+        var systemDark = matchMedia("(prefers-color-scheme: dark)").matches;
+        var dark = choice === "dark" || (choice !== "light" && systemDark);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-AhhrdeD3.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BIldHX1p.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-C2FgVafX.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-Dfte7Ux7.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -27,6 +40,21 @@
       </symbol>
     </svg>
     <main class="page">
+      <fieldset class="theme-picker">
+        <legend class="visually-hidden">Color theme</legend>
+        <label class="theme-option" title="Light">
+          <input type="radio" name="theme" value="light" />
+          <span><span aria-hidden="true">☀️</span> Light</span>
+        </label>
+        <label class="theme-option" title="Dark">
+          <input type="radio" name="theme" value="dark" />
+          <span><span aria-hidden="true">🌙</span> Dark</span>
+        </label>
+        <label class="theme-option" title="Follow your computer's setting">
+          <input type="radio" name="theme" value="system" />
+          <span><span aria-hidden="true">💻</span> System</span>
+        </label>
+      </fieldset>
       <header class="page-header">
         <svg class="sprig sprig-left" aria-hidden="true"><use href="#leaf-sprig" /></svg>
         <div>
