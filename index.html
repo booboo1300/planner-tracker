@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Planner &amp; Tracker</title>
     <script>
-      // Applies the saved Light/Dark/System choice before the page draws, so it never flashes the
-      // wrong colors. src/theme.ts takes over once the app loads; keep the two in sync.
+      // Applies the saved theme choice before the page draws, so it never flashes the wrong
+      // colors. src/theme.ts takes over once the app loads; keep the two in sync.
       (function () {
         var choice = "system";
         try {
           choice = localStorage.getItem("planner-tracker.theme") || "system";
         } catch (error) {}
+        var fixed = choice === "light" || choice === "sage" || choice === "dark";
         var systemDark = matchMedia("(prefers-color-scheme: dark)").matches;
-        var dark = choice === "dark" || (choice !== "light" && systemDark);
-        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        document.documentElement.dataset.theme = fixed ? choice : systemDark ? "dark" : "light";
       })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,8 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-C2FgVafX.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-Dfte7Ux7.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-6AW1X54g.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-dNllSiKT.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -45,6 +45,10 @@
         <label class="theme-option" title="Light">
           <input type="radio" name="theme" value="light" />
           <span><span aria-hidden="true">☀️</span> Light</span>
+        </label>
+        <label class="theme-option" title="Sage: a medium green">
+          <input type="radio" name="theme" value="sage" />
+          <span><span aria-hidden="true">🌿</span> Sage</span>
         </label>
         <label class="theme-option" title="Dark">
           <input type="radio" name="theme" value="dark" />
