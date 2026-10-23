@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-7RTyBBUe.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DpnD1URD.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-9AAdqfrF.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DeyaIoiF.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -259,9 +259,18 @@
       </p>
 
       <nav class="tabs" role="tablist" aria-label="Views">
-        <button id="list-tab" class="tab" type="button" role="tab" aria-controls="list-view">📋 List</button>
-        <button id="calendar-tab" class="tab" type="button" role="tab" aria-controls="calendar-view">📅 Calendar</button>
-        <button id="grades-tab" class="tab" type="button" role="tab" aria-controls="grades-view">🎓 Grades</button>
+        <button id="list-tab" class="tab" type="button" role="tab" aria-controls="list-view">
+          <span aria-hidden="true">📋</span> <span class="tab-label">List</span>
+        </button>
+        <button id="calendar-tab" class="tab" type="button" role="tab" aria-controls="calendar-view">
+          <span aria-hidden="true">📅</span> <span class="tab-label">Calendar</span>
+        </button>
+        <button id="grades-tab" class="tab" type="button" role="tab" aria-controls="grades-view">
+          <span aria-hidden="true">🎓</span> <span class="tab-label">Grades</span>
+        </button>
+        <button id="cards-tab" class="tab" type="button" role="tab" aria-controls="cards-view">
+          <span aria-hidden="true">🃏</span> <span class="tab-label">Cards</span>
+        </button>
       </nav>
 
       <div id="list-view" role="tabpanel" aria-labelledby="list-tab">
@@ -400,6 +409,19 @@
           </div>
         </section>
 
+        <section class="card filter-bar" aria-label="Search and filter assignments">
+          <input
+            id="search-input"
+            class="search-input"
+            type="search"
+            placeholder="🔍 Search assignments, classes, and notes"
+            aria-label="Search assignments, classes, and notes"
+            autocomplete="off"
+          />
+          <div id="class-filters" class="class-filters" role="group" aria-label="Show one class"></div>
+          <p id="filter-summary" class="filter-summary" aria-live="polite"></p>
+        </section>
+
         <section class="upcoming-section" aria-labelledby="list-heading">
           <h2 id="list-heading" class="list-heading">Upcoming</h2>
           <ul id="assignment-list" class="assignment-list"></ul>
@@ -525,6 +547,20 @@
           </p>
         </section>
 
+        <section class="card trend-card" aria-labelledby="trend-heading">
+          <div class="study-top">
+            <h2 id="trend-heading">📈 Grade trend</h2>
+            <select id="trend-class" class="study-deck" aria-label="Which class's trend to show"></select>
+          </div>
+          <p id="trend-summary" class="trend-summary"></p>
+          <div id="trend-chart" class="trend-chart"></div>
+          <div id="trend-legend" class="trend-legend" aria-hidden="true">
+            <span><span class="legend-swatch"></span>Each grade</span>
+            <span><span class="legend-swatch dashed"></span>Running average</span>
+          </div>
+          <p id="trend-empty" class="study-empty"></p>
+        </section>
+
         <section class="card goal-card" aria-labelledby="goal-heading">
           <h2 id="goal-heading">🎯 Grade goal calculator</h2>
           <p class="goal-intro">What do you need on the final to reach your goal?</p>
@@ -579,6 +615,65 @@
             <p id="gpa-cumulative" class="gpa-cumulative" aria-live="polite"></p>
           </details>
         </section>
+      </div>
+
+      <div id="cards-view" role="tabpanel" aria-labelledby="cards-tab" hidden>
+        <form id="card-form" class="card card-form" novalidate>
+          <h2>🃏 Add a flashcard</h2>
+          <div class="card-fields">
+            <label class="field">
+              <span>Class</span>
+              <input id="card-course" type="text" placeholder="e.g. BIO 120" maxlength="40" list="course-options" />
+            </label>
+            <label class="field">
+              <span>Front (question or term)</span>
+              <textarea id="card-front" class="card-textarea" rows="2" maxlength="500" placeholder="e.g. What is mitosis?"></textarea>
+            </label>
+            <label class="field">
+              <span>Back (answer)</span>
+              <textarea id="card-back" class="card-textarea" rows="2" maxlength="500" placeholder="e.g. Cell division into two identical cells"></textarea>
+            </label>
+          </div>
+          <div class="form-footer">
+            <p id="card-message" class="form-message" role="status" aria-live="polite"></p>
+            <button id="card-cancel-edit" type="button" class="notes-cancel" hidden>Cancel</button>
+            <button id="card-submit" type="submit" class="add-button">Add card</button>
+          </div>
+        </form>
+
+        <section class="card study-card" aria-labelledby="study-heading">
+          <div class="study-top">
+            <h2 id="study-heading">📖 Study</h2>
+            <select id="card-deck" class="study-deck" aria-label="Which class to study"></select>
+          </div>
+          <label class="reminders-toggle study-filter">
+            <input id="card-only-learning" type="checkbox" />
+            <span>Only cards I'm still learning</span>
+          </label>
+          <p id="card-study-empty" class="study-empty"></p>
+          <div id="card-study" hidden>
+            <button id="flashcard" type="button" class="flashcard">
+              <span id="flashcard-side" class="flashcard-side"></span>
+              <span id="flashcard-text" class="flashcard-text"></span>
+              <span id="flashcard-hint" class="flashcard-hint"></span>
+            </button>
+            <div class="study-controls">
+              <button id="card-prev" type="button" class="audio-button" aria-label="Previous card">←</button>
+              <span id="card-progress" class="study-progress" aria-live="polite"></span>
+              <button id="card-next" type="button" class="audio-button" aria-label="Next card">→</button>
+              <button id="card-shuffle" type="button" class="text-button">🔀 Shuffle</button>
+            </div>
+            <div class="study-marks">
+              <button id="card-again" type="button" class="secondary-button" hidden>🔁 Still learning</button>
+              <button id="card-got" type="button" class="add-button" hidden>✅ Got it</button>
+            </div>
+          </div>
+        </section>
+
+        <details class="card card-list-box">
+          <summary><h2>All cards (<span id="card-list-count">0</span>)</h2></summary>
+          <ul id="card-list" class="card-list"></ul>
+        </details>
       </div>
 
       <section class="card backup-card" aria-labelledby="backup-heading">
