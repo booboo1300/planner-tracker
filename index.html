@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-9AAdqfrF.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DeyaIoiF.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-6SEFW9R2.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DFydJ9u1.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -70,6 +70,17 @@
     <main class="page">
       <div class="top-bar">
         <div class="top-buttons">
+          <button
+            id="search-button"
+            type="button"
+            class="tour-button search-button"
+            aria-label="Search assignments"
+            aria-expanded="false"
+            aria-controls="search-panel"
+            title="Search assignments"
+          >
+            🔍
+          </button>
           <button id="tour-button" type="button" class="tour-button" title="Take a quick tour of the features">
             ❓ Tour
           </button>
@@ -118,6 +129,20 @@
           </label>
         </fieldset>
       </div>
+      <section id="search-panel" class="card filter-bar" aria-label="Search assignments" hidden>
+        <input
+          id="search-input"
+          class="search-input"
+          type="search"
+          placeholder="Search assignments, classes, and notes"
+          aria-label="Search assignments, classes, and notes"
+          aria-controls="search-results"
+          autocomplete="off"
+        />
+        <ul id="search-results" class="search-results" aria-label="Matching assignments"></ul>
+        <div id="class-filters" class="class-filters" role="group" aria-label="Show one class"></div>
+        <p id="filter-summary" class="filter-summary" aria-live="polite"></p>
+      </section>
       <aside id="music-dock" class="music-dock card" aria-label="Now playing" hidden>
         <div class="music-dock-top">
           <span id="music-dock-title" class="music-dock-title"></span>
@@ -407,19 +432,6 @@
             <h3 class="stats-subheading">By class this week</h3>
             <ul id="stats-classes" class="stats-classes"></ul>
           </div>
-        </section>
-
-        <section class="card filter-bar" aria-label="Search and filter assignments">
-          <input
-            id="search-input"
-            class="search-input"
-            type="search"
-            placeholder="🔍 Search assignments, classes, and notes"
-            aria-label="Search assignments, classes, and notes"
-            autocomplete="off"
-          />
-          <div id="class-filters" class="class-filters" role="group" aria-label="Show one class"></div>
-          <p id="filter-summary" class="filter-summary" aria-live="polite"></p>
         </section>
 
         <section class="upcoming-section" aria-labelledby="list-heading">
