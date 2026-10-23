@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-CPTNw6GV.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-h1vb3Ep-.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-BzFl0UrR.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BesG2t5o.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -67,29 +67,34 @@
       </symbol>
     </svg>
     <main class="page">
-      <fieldset class="theme-picker">
-        <legend class="visually-hidden">Color theme</legend>
-        <label class="theme-option" title="Light">
-          <input type="radio" name="theme" value="light" />
-          <span><span aria-hidden="true">☀️</span> Light</span>
-        </label>
-        <label class="theme-option" title="Sage: a medium green">
-          <input type="radio" name="theme" value="sage" />
-          <span><span aria-hidden="true">🌿</span> Sage</span>
-        </label>
-        <label class="theme-option" title="Dark">
-          <input type="radio" name="theme" value="dark" />
-          <span><span aria-hidden="true">🌙</span> Dark</span>
-        </label>
-        <label class="theme-option" title="Follow your computer's setting">
-          <input type="radio" name="theme" value="system" />
-          <span><span aria-hidden="true">💻</span> System</span>
-        </label>
-        <label class="theme-option" title="Pick your own colors">
-          <input type="radio" name="theme" value="custom" />
-          <span><span aria-hidden="true">🎨</span> Custom</span>
-        </label>
-      </fieldset>
+      <div class="top-bar">
+        <button id="tour-button" type="button" class="tour-button" title="Take a quick tour of the features">
+          ❓ Tour
+        </button>
+        <fieldset class="theme-picker">
+          <legend class="visually-hidden">Color theme</legend>
+          <label class="theme-option" title="Light">
+            <input type="radio" name="theme" value="light" />
+            <span><span aria-hidden="true">☀️</span> Light</span>
+          </label>
+          <label class="theme-option" title="Sage: a medium green">
+            <input type="radio" name="theme" value="sage" />
+            <span><span aria-hidden="true">🌿</span> Sage</span>
+          </label>
+          <label class="theme-option" title="Dark">
+            <input type="radio" name="theme" value="dark" />
+            <span><span aria-hidden="true">🌙</span> Dark</span>
+          </label>
+          <label class="theme-option" title="Follow your computer's setting">
+            <input type="radio" name="theme" value="system" />
+            <span><span aria-hidden="true">💻</span> System</span>
+          </label>
+          <label class="theme-option" title="Pick your own colors">
+            <input type="radio" name="theme" value="custom" />
+            <span><span aria-hidden="true">🎨</span> Custom</span>
+          </label>
+        </fieldset>
+      </div>
       <header class="page-header">
         <svg class="sprig sprig-left" aria-hidden="true"><use href="#leaf-sprig" /></svg>
         <div>
@@ -222,7 +227,7 @@
           </section>
         </div>
 
-        <section aria-labelledby="list-heading">
+        <section class="upcoming-section" aria-labelledby="list-heading">
           <h2 id="list-heading" class="list-heading">Upcoming</h2>
           <ul id="assignment-list" class="assignment-list"></ul>
           <div id="empty-state" class="card empty-state" hidden>
@@ -400,5 +405,25 @@
         <p id="backup-message" class="form-message" role="status" aria-live="polite"></p>
       </section>
     </main>
+    <div id="tour" class="tour" hidden>
+      <div id="tour-spotlight" class="tour-spotlight" hidden></div>
+      <div
+        id="tour-card"
+        class="tour-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tour-title"
+        aria-describedby="tour-body"
+      >
+        <p id="tour-progress" class="tour-progress"></p>
+        <h2 id="tour-title" class="tour-title"></h2>
+        <p id="tour-body" class="tour-body"></p>
+        <div class="tour-actions">
+          <button id="tour-skip" type="button" class="text-button">Skip tour</button>
+          <button id="tour-back" type="button" class="secondary-button">Back</button>
+          <button id="tour-next" type="button" class="add-button">Next</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
