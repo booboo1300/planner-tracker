@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-6SEFW9R2.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DFydJ9u1.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-97hcFs4L.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DtFD5kmW.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -658,10 +658,37 @@
             <h2 id="study-heading">📖 Study</h2>
             <select id="card-deck" class="study-deck" aria-label="Which class to study"></select>
           </div>
+          <fieldset class="study-modes">
+            <legend class="visually-hidden">How to study</legend>
+            <label class="timer-mode">
+              <input type="radio" name="study-mode" value="flip" checked />
+              <span>🔄 Flip cards</span>
+            </label>
+            <label class="timer-mode">
+              <input type="radio" name="study-mode" value="quiz" />
+              <span>📝 Quiz</span>
+            </label>
+          </fieldset>
           <label class="reminders-toggle study-filter">
             <input id="card-only-learning" type="checkbox" />
             <span>Only cards I'm still learning</span>
           </label>
+          <div id="card-quiz" class="card-quiz" hidden>
+            <p id="quiz-progress" class="study-progress quiz-progress"></p>
+            <p id="quiz-prompt" class="quiz-prompt"></p>
+            <ol id="quiz-choices" class="quiz-choices"></ol>
+            <p id="quiz-feedback" class="quiz-feedback" role="status" aria-live="polite"></p>
+            <div class="study-marks">
+              <button id="quiz-next" type="button" class="add-button" hidden>Next question →</button>
+            </div>
+            <div id="quiz-results" class="quiz-results" hidden>
+              <p id="quiz-score" class="quiz-score"></p>
+              <div class="study-marks">
+                <button id="quiz-review" type="button" class="secondary-button">🔁 Review the ones I missed</button>
+                <button id="quiz-again" type="button" class="add-button">Try again</button>
+              </div>
+            </div>
+          </div>
           <p id="card-study-empty" class="study-empty"></p>
           <div id="card-study" hidden>
             <button id="flashcard" type="button" class="flashcard">
