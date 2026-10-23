@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-B6QqqpkT.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DQsrnZgG.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-DJ0BRxQc.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-h1vb3Ep-.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -126,6 +126,20 @@
       </nav>
 
       <div id="list-view" role="tabpanel" aria-labelledby="list-tab">
+        <section class="card today-card" aria-labelledby="today-heading">
+          <h2 id="today-heading">☀️ Today <span id="today-date" class="week-dates"></span></h2>
+          <ul id="today-items" class="today-items"></ul>
+          <p id="today-empty" class="today-empty">Nothing scheduled today. Enjoy! 🌿</p>
+          <div class="reminders-setting">
+            <label class="reminders-toggle">
+              <input id="reminders-toggle" type="checkbox" />
+              <span>🔔 Remind me about due dates and events</span>
+            </label>
+            <button id="reminders-allow" type="button" class="text-button" hidden>Allow notifications</button>
+            <span id="reminders-status" class="reminders-status"></span>
+          </div>
+        </section>
+
         <section class="card week-card" aria-labelledby="week-heading">
           <h2 id="week-heading">📅 This week <span id="week-dates" class="week-dates"></span></h2>
           <p id="week-progress-text" class="week-progress-text"></p>
