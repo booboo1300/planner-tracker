@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-BV900QDd.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-Cy35Y-JE.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-DC__YLSr.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-Nuf-n7Ns.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -301,6 +301,36 @@
             </p>
           </section>
         </div>
+
+        <section class="card stats-card" aria-labelledby="stats-heading">
+          <h2 id="stats-heading">📊 Study stats</h2>
+          <p id="stats-empty" class="stats-empty">
+            No study time yet. Start the ⏱️ Focus timer and your time will show up here, by day and by class.
+          </p>
+          <div id="stats-content" hidden>
+            <div class="stats-numbers">
+              <div class="stat">
+                <span class="stat-label">Today</span>
+                <span id="stats-today" class="stat-value"></span>
+                <span id="stats-today-trend" class="stat-trend"></span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Last 7 days</span>
+                <span id="stats-week" class="stat-value"></span>
+                <span id="stats-week-trend" class="stat-trend"></span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Daily average</span>
+                <span id="stats-average" class="stat-value"></span>
+                <span class="stat-trend same">over the last 7 days</span>
+              </div>
+            </div>
+            <h3 class="stats-subheading">Last 7 days</h3>
+            <div id="stats-chart" class="stats-chart" role="list" aria-label="Study time each day"></div>
+            <h3 class="stats-subheading">By class this week</h3>
+            <ul id="stats-classes" class="stats-classes"></ul>
+          </div>
+        </section>
 
         <section class="upcoming-section" aria-labelledby="list-heading">
           <h2 id="list-heading" class="list-heading">Upcoming</h2>
