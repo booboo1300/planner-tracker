@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-CpnjqIZH.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DTphVXdQ.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-BI3BMiIW.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-B_F6qnPF.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -66,11 +66,24 @@
         <path style="fill: var(--leaf)" d="M126 18 C 128 8, 134 2, 140 2 C 140 10, 134 16, 126 18 Z" />
       </symbol>
     </svg>
+    <div id="page-background" class="page-background" aria-hidden="true" hidden></div>
     <main class="page">
       <div class="top-bar">
-        <button id="tour-button" type="button" class="tour-button" title="Take a quick tour of the features">
-          ❓ Tour
-        </button>
+        <div class="top-buttons">
+          <button id="tour-button" type="button" class="tour-button" title="Take a quick tour of the features">
+            ❓ Tour
+          </button>
+          <button
+            id="background-button"
+            type="button"
+            class="tour-button"
+            aria-expanded="false"
+            aria-controls="background-panel"
+            title="Add a background picture or GIF, or share a theme"
+          >
+            🖼️ Background
+          </button>
+        </div>
         <fieldset class="theme-picker">
           <legend class="visually-hidden">Color theme</legend>
           <label class="theme-option" title="Light">
@@ -118,6 +131,51 @@
           <button type="button" class="goal-chip" data-preset="dark">🌙 Dark</button>
         </div>
       </details>
+
+      <section id="background-panel" class="card background-panel" aria-labelledby="background-heading" hidden>
+        <div class="background-panel-top">
+          <h2 id="background-heading">🖼️ Background</h2>
+          <button id="background-close" type="button" class="remove-button" aria-label="Close background settings">
+            ×
+          </button>
+        </div>
+        <p class="custom-colors-intro">
+          Put your own picture or GIF behind the page. It stays in this browser and isn't uploaded anywhere.
+        </p>
+        <div class="background-upload-row">
+          <img id="background-preview" class="background-preview" alt="Your background picture" hidden />
+          <button id="background-upload" type="button" class="add-button">Upload picture or GIF</button>
+          <input id="background-file" type="file" accept="image/png,image/jpeg,image/gif,image/webp" hidden />
+        </div>
+        <div id="background-options" class="background-options" hidden>
+          <fieldset class="field background-fit">
+            <legend>Fit</legend>
+            <label class="type-option">
+              <input type="radio" name="background-fit" value="fill" />
+              <span class="pill event-school">Fill screen</span>
+            </label>
+            <label class="type-option">
+              <input type="radio" name="background-fit" value="tile" />
+              <span class="pill event-school">Tile</span>
+            </label>
+          </fieldset>
+          <label class="field background-fade">
+            <span>Fade (keeps text readable): <output id="background-fade-value" for="background-fade"></output></span>
+            <input id="background-fade" type="range" min="0" max="90" step="5" />
+          </label>
+          <button id="background-remove" type="button" class="text-button danger">Remove picture</button>
+        </div>
+        <p id="background-message" class="form-message" role="status" aria-live="polite"></p>
+
+        <h3 class="background-subheading">🎨 Theme files</h3>
+        <p class="custom-colors-intro">Save your 🎨 Custom colors to share, or load a theme someone sent you.</p>
+        <div class="background-theme-row">
+          <button id="theme-download" type="button" class="secondary-button">Download my theme</button>
+          <button id="theme-upload" type="button" class="secondary-button">Upload a theme</button>
+          <input id="theme-file" type="file" accept=".json,application/json" hidden />
+        </div>
+        <p id="theme-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
 
       <p id="storage-error" class="storage-error" hidden>
         Your browser is blocking saved data, so nothing will be kept after you close this page.
