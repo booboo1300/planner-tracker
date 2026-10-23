@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-BzFl0UrR.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BesG2t5o.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-CpnjqIZH.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DTphVXdQ.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -161,6 +161,15 @@
           <ul id="week-stats" class="week-stats"></ul>
         </section>
 
+        <section class="card countdown-card" aria-labelledby="countdown-heading">
+          <h2 id="countdown-heading">⏳ Countdowns</h2>
+          <ul id="countdown-list" class="countdown-list"></ul>
+          <p id="countdown-empty" class="countdown-empty">
+            No quizzes or exams coming up. On the Calendar tab, add one as a Quiz, Midterm, Final, or Exam and it
+            will count down here.
+          </p>
+        </section>
+
         <form id="add-form" class="card add-form" novalidate>
           <h2>Add an assignment</h2>
           <div class="fields">
@@ -258,6 +267,10 @@
           <div class="calendar-legend" aria-hidden="true">
             <span><span class="legend-dot event-personal"></span>Personal</span>
             <span><span class="legend-dot event-school"></span>School</span>
+            <span><span class="legend-dot event-quiz"></span>Quiz</span>
+            <span><span class="legend-dot event-midterm"></span>Midterm</span>
+            <span><span class="legend-dot event-final"></span>Final</span>
+            <span><span class="legend-dot event-exam"></span>Exam</span>
             <span>📌 Assignment due</span>
           </div>
         </section>
@@ -277,17 +290,6 @@
                 <span>Time (optional)</span>
                 <input id="event-time-input" type="time" />
               </label>
-              <fieldset class="field type-picker">
-                <legend>Type</legend>
-                <label class="type-option">
-                  <input type="radio" name="event-type" value="personal" checked />
-                  <span class="pill event-personal">Personal</span>
-                </label>
-                <label class="type-option">
-                  <input type="radio" name="event-type" value="school" />
-                  <span class="pill event-school">School</span>
-                </label>
-              </fieldset>
               <label class="field">
                 <span>Repeats</span>
                 <select id="event-repeat-select">
@@ -309,6 +311,34 @@
                 <label class="weekday-option"><input type="checkbox" value="4" /><span>Thu</span></label>
                 <label class="weekday-option"><input type="checkbox" value="5" /><span>Fri</span></label>
                 <label class="weekday-option"><input type="checkbox" value="6" /><span>Sat</span></label>
+              </fieldset>
+              <fieldset class="field type-picker">
+                <legend>Type</legend>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="personal" checked />
+                  <span class="pill event-personal">Personal</span>
+                </label>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="school" />
+                  <span class="pill event-school">School</span>
+                </label>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="quiz" />
+                  <span class="pill event-quiz">📝 Quiz</span>
+                </label>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="midterm" />
+                  <span class="pill event-midterm">📘 Midterm</span>
+                </label>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="final" />
+                  <span class="pill event-final">🎓 Final</span>
+                </label>
+                <label class="type-option">
+                  <input type="radio" name="event-type" value="exam" />
+                  <span class="pill event-exam">📖 Exam</span>
+                </label>
+                <p class="type-hint">Quizzes and exams get a countdown on the List tab.</p>
               </fieldset>
             </div>
             <div class="form-footer">
