@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-ADxetrHt.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BZ0C12PS.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-7RTyBBUe.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DpnD1URD.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -125,6 +125,18 @@
           <button id="music-dock-close" type="button" class="icon-plain" aria-label="Stop the music">×</button>
         </div>
         <div id="music-dock-player" class="music-dock-player"></div>
+        <div id="audio-player" class="audio-player" hidden>
+          <input id="audio-seek" class="audio-seek" type="range" min="0" max="1000" value="0" aria-label="Song position" />
+          <div class="audio-times">
+            <span id="audio-current">0:00</span>
+            <span id="audio-duration">0:00</span>
+          </div>
+          <div class="audio-controls">
+            <button id="audio-prev" type="button" class="audio-button" aria-label="Previous song">⏮</button>
+            <button id="audio-play" type="button" class="audio-button audio-play" aria-label="Play">▶</button>
+            <button id="audio-next" type="button" class="audio-button" aria-label="Next song">⏭</button>
+          </div>
+        </div>
       </aside>
       <header class="page-header">
         <svg class="sprig sprig-left" aria-hidden="true"><use href="#leaf-sprig" /></svg>
@@ -228,6 +240,17 @@
         <h3 class="background-subheading">Your playlists</h3>
         <ul id="music-list" class="music-list"></ul>
         <p id="music-empty" class="custom-colors-intro">No playlists yet. Add one above.</p>
+
+        <h3 class="background-subheading">🎧 Your songs</h3>
+        <p class="custom-colors-intro">
+          Upload songs from your computer (MP3, M4A, AAC, WAV, OGG, or FLAC, up to 30 MB each) for a simple player
+          with ⏮ ⏯ ⏭ and a progress bar. They're saved in this browser, not uploaded anywhere.
+        </p>
+        <button id="song-upload" type="button" class="secondary-button">Upload songs</button>
+        <input id="song-files" type="file" accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg,.oga,.flac" multiple hidden />
+        <p id="song-message" class="form-message" role="status" aria-live="polite"></p>
+        <ul id="song-list" class="music-list"></ul>
+        <p id="song-empty" class="custom-colors-intro">No songs yet.</p>
       </section>
 
       <p id="storage-error" class="storage-error" hidden>
