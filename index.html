@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-Mqfq793J.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DqvHfcyk.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-Cn0R8JXo.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DR-ruLlO.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -82,6 +82,16 @@
             title="Add a background picture or GIF, or share a theme"
           >
             🖼️ Background
+          </button>
+          <button
+            id="music-button"
+            type="button"
+            class="tour-button"
+            aria-expanded="false"
+            aria-controls="music-panel"
+            title="Listen to your Spotify, Apple Music, or YouTube playlists"
+          >
+            🎵 Music
           </button>
         </div>
         <fieldset class="theme-picker">
@@ -183,6 +193,33 @@
           <input id="theme-file" type="file" accept=".json,application/json" hidden />
         </div>
         <p id="theme-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="music-panel" class="card background-panel" aria-labelledby="music-heading" hidden>
+        <div class="background-panel-top">
+          <h2 id="music-heading">🎵 Music</h2>
+          <button id="music-close" type="button" class="remove-button" aria-label="Close music">×</button>
+        </div>
+        <p class="custom-colors-intro">
+          Paste a playlist, album, or song link from Spotify, Apple Music, or YouTube. It plays in the corner while
+          you use the rest of the site. Full songs play if you're signed in to that service in this browser;
+          otherwise Spotify and Apple Music play short previews.
+        </p>
+        <form id="music-form" class="music-form" novalidate>
+          <label class="field music-link-field">
+            <span>Link</span>
+            <input id="music-link" type="url" placeholder="https://open.spotify.com/playlist/…" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Name (optional)</span>
+            <input id="music-name" type="text" placeholder="e.g. Study beats" maxlength="60" />
+          </label>
+          <button type="submit" class="add-button">Add</button>
+        </form>
+        <p id="music-message" class="form-message" role="status" aria-live="polite"></p>
+        <h3 class="background-subheading">Your playlists</h3>
+        <ul id="music-list" class="music-list"></ul>
+        <p id="music-empty" class="custom-colors-intro">No playlists yet. Add one above.</p>
       </section>
 
       <p id="storage-error" class="storage-error" hidden>
@@ -531,6 +568,15 @@
         <p id="backup-message" class="form-message" role="status" aria-live="polite"></p>
       </section>
     </main>
+    <aside id="music-dock" class="music-dock card" aria-label="Now playing" hidden>
+      <div class="music-dock-top">
+        <span id="music-dock-title" class="music-dock-title"></span>
+        <button id="music-dock-minimize" type="button" class="icon-plain" aria-label="Shrink the player">▾</button>
+        <button id="music-dock-close" type="button" class="icon-plain" aria-label="Stop the music">×</button>
+      </div>
+      <div id="music-dock-player" class="music-dock-player"></div>
+    </aside>
+
     <div id="tour" class="tour" hidden>
       <div id="tour-spotlight" class="tour-spotlight" hidden></div>
       <div
