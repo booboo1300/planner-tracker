@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-C6buHrD6.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BprocqEW.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-iML7UGJ7.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-4Uz444u4.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -387,7 +387,17 @@
             <div class="plant-text">
               <h2 id="plant-heading">🌱 Your plant</h2>
               <p id="plant-caption" class="plant-caption" aria-live="polite"></p>
-              <p class="plant-hint">It grows a leaf every time you finish an assignment, and blooms every 10.</p>
+              <div class="plant-progress" aria-hidden="true">
+                <div id="plant-progress-fill" class="plant-progress-fill"></div>
+              </div>
+              <p class="plant-hint">
+                It grows a leaf when you finish an assignment or a focus round. At 10 leaves it joins your
+                garden and a new kind of plant starts.
+              </p>
+              <div id="plant-garden" class="plant-garden" hidden>
+                <p id="plant-garden-label" class="plant-garden-label"></p>
+                <div id="plant-garden-row" class="plant-garden-row"></div>
+              </div>
             </div>
           </section>
 
