@@ -50,8 +50,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-97hcFs4L.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-DtFD5kmW.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-C6buHrD6.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BprocqEW.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -75,24 +75,11 @@
             type="button"
             class="tour-button search-button"
             aria-label="Search assignments"
-            aria-expanded="false"
+            aria-haspopup="dialog"
             aria-controls="search-panel"
             title="Search assignments"
           >
             🔍
-          </button>
-          <button id="tour-button" type="button" class="tour-button" title="Take a quick tour of the features">
-            ❓ Tour
-          </button>
-          <button
-            id="background-button"
-            type="button"
-            class="tour-button"
-            aria-expanded="false"
-            aria-controls="background-panel"
-            title="Add a background picture or GIF, or share a theme"
-          >
-            🖼️ Background
           </button>
           <button
             id="music-button"
@@ -104,45 +91,47 @@
           >
             🎵 Music
           </button>
+          <button
+            id="customize-button"
+            type="button"
+            class="tour-button"
+            aria-expanded="false"
+            aria-controls="customize-panel"
+            title="Change the colors, add a background picture or GIF, or share a theme"
+          >
+            🎨 Customize
+          </button>
+          <button
+            id="tour-button"
+            type="button"
+            class="tour-button help-button"
+            aria-label="Take a quick tour of the features"
+            title="Take a quick tour of the features"
+          >
+            ?
+          </button>
         </div>
-        <fieldset class="theme-picker">
-          <legend class="visually-hidden">Color theme</legend>
-          <label class="theme-option" title="Light">
-            <input type="radio" name="theme" value="light" />
-            <span><span aria-hidden="true">☀️</span> Light</span>
-          </label>
-          <label class="theme-option" title="Sage: a medium green">
-            <input type="radio" name="theme" value="sage" />
-            <span><span aria-hidden="true">🌿</span> Sage</span>
-          </label>
-          <label class="theme-option" title="Dark">
-            <input type="radio" name="theme" value="dark" />
-            <span><span aria-hidden="true">🌙</span> Dark</span>
-          </label>
-          <label class="theme-option" title="Follow your computer's setting">
-            <input type="radio" name="theme" value="system" />
-            <span><span aria-hidden="true">💻</span> System</span>
-          </label>
-          <label class="theme-option" title="Pick your own colors">
-            <input type="radio" name="theme" value="custom" />
-            <span><span aria-hidden="true">🎨</span> Custom</span>
-          </label>
-        </fieldset>
       </div>
-      <section id="search-panel" class="card filter-bar" aria-label="Search assignments" hidden>
-        <input
-          id="search-input"
-          class="search-input"
-          type="search"
-          placeholder="Search assignments, classes, and notes"
-          aria-label="Search assignments, classes, and notes"
-          aria-controls="search-results"
-          autocomplete="off"
-        />
-        <ul id="search-results" class="search-results" aria-label="Matching assignments"></ul>
-        <div id="class-filters" class="class-filters" role="group" aria-label="Show one class"></div>
-        <p id="filter-summary" class="filter-summary" aria-live="polite"></p>
-      </section>
+      <dialog id="search-panel" class="search-dialog" aria-labelledby="search-heading">
+        <div class="card search-dialog-box">
+          <div class="background-panel-top">
+            <h2 id="search-heading">🔍 Search</h2>
+            <button id="search-close" type="button" class="remove-button" aria-label="Close search">×</button>
+          </div>
+          <input
+            id="search-input"
+            class="search-input"
+            type="search"
+            placeholder="Search assignments, classes, and notes"
+            aria-label="Search assignments, classes, and notes"
+            aria-controls="search-results"
+            autocomplete="off"
+          />
+          <ul id="search-results" class="search-results" aria-label="Matching assignments"></ul>
+          <div id="class-filters" class="class-filters" role="group" aria-label="Show one class"></div>
+          <p id="filter-summary" class="filter-summary" aria-live="polite"></p>
+        </div>
+      </dialog>
       <aside id="music-dock" class="music-dock card" aria-label="Now playing" hidden>
         <div class="music-dock-top">
           <span id="music-dock-title" class="music-dock-title"></span>
@@ -187,13 +176,39 @@
         </div>
       </details>
 
-      <section id="background-panel" class="card background-panel" aria-labelledby="background-heading" hidden>
+      <section id="customize-panel" class="card background-panel" aria-labelledby="customize-heading" hidden>
         <div class="background-panel-top">
-          <h2 id="background-heading">🖼️ Background</h2>
-          <button id="background-close" type="button" class="remove-button" aria-label="Close background settings">
+          <h2 id="customize-heading">🎨 Customize</h2>
+          <button id="customize-close" type="button" class="remove-button" aria-label="Close customize settings">
             ×
           </button>
         </div>
+        <h3 class="background-subheading">Colors</h3>
+        <fieldset class="theme-picker">
+          <legend class="visually-hidden">Color theme</legend>
+          <label class="theme-option" title="Light">
+            <input type="radio" name="theme" value="light" />
+            <span><span aria-hidden="true">☀️</span> Light</span>
+          </label>
+          <label class="theme-option" title="Sage: a medium green">
+            <input type="radio" name="theme" value="sage" />
+            <span><span aria-hidden="true">🌿</span> Sage</span>
+          </label>
+          <label class="theme-option" title="Dark">
+            <input type="radio" name="theme" value="dark" />
+            <span><span aria-hidden="true">🌙</span> Dark</span>
+          </label>
+          <label class="theme-option" title="Follow your computer's setting">
+            <input type="radio" name="theme" value="system" />
+            <span><span aria-hidden="true">💻</span> System</span>
+          </label>
+          <label class="theme-option" title="Pick your own colors">
+            <input type="radio" name="theme" value="custom" />
+            <span><span aria-hidden="true">🎨</span> Custom</span>
+          </label>
+        </fieldset>
+
+        <h3 class="background-subheading">🖼️ Background</h3>
         <p class="custom-colors-intro">
           Put your own picture or GIF behind the page. It stays in this browser and isn't uploaded anywhere.
         </p>
@@ -225,6 +240,10 @@
             </span>
             <input id="background-see-through" type="range" min="0" max="80" step="5" />
           </label>
+          <label class="reminders-toggle background-blur">
+            <input id="background-blur" type="checkbox" />
+            <span>Blur the picture behind cards</span>
+          </label>
           <button id="background-match" type="button" class="secondary-button">🎨 Match colors to my picture</button>
           <button id="background-remove" type="button" class="text-button danger">Remove picture</button>
         </div>
@@ -239,6 +258,7 @@
         </div>
         <p id="theme-message" class="form-message" role="status" aria-live="polite"></p>
       </section>
+      <p id="toast" class="toast" role="status" aria-live="polite" hidden></p>
 
       <section id="music-panel" class="card background-panel" aria-labelledby="music-heading" hidden>
         <div class="background-panel-top">
