@@ -8,12 +8,13 @@
       // Applies the saved theme choice before the page draws, so it never flashes the wrong
       // colors. src/theme.ts takes over once the app loads; keep the two in sync.
       (function () {
-        var choice = "system";
+        var choice = "";
         try {
-          choice = localStorage.getItem("planner-tracker.theme") || "system";
+          choice = localStorage.getItem("planner-tracker.theme") || "";
         } catch (error) {}
         var root = document.documentElement;
         var fixed = choice === "light" || choice === "sage" || choice === "dark";
+        // With no choice yet (or the old "system" one), start light or dark to match the computer.
         var systemDark = matchMedia("(prefers-color-scheme: dark)").matches;
         root.dataset.theme = fixed ? choice : systemDark ? "dark" : "light";
         if (choice !== "custom") return;
@@ -50,7 +51,7 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-iML7UGJ7.js"></script>
+    <script type="module" crossorigin src="/planner-tracker/assets/index-DrPEmhPW.js"></script>
     <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-4Uz444u4.css">
   </head>
   <body>
@@ -197,10 +198,6 @@
           <label class="theme-option" title="Dark">
             <input type="radio" name="theme" value="dark" />
             <span><span aria-hidden="true">🌙</span> Dark</span>
-          </label>
-          <label class="theme-option" title="Follow your computer's setting">
-            <input type="radio" name="theme" value="system" />
-            <span><span aria-hidden="true">💻</span> System</span>
           </label>
           <label class="theme-option" title="Pick your own colors">
             <input type="radio" name="theme" value="custom" />
