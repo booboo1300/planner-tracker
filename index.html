@@ -13,10 +13,8 @@
           choice = localStorage.getItem("planner-tracker.theme") || "";
         } catch (error) {}
         var root = document.documentElement;
-        var fixed = choice === "light" || choice === "sage" || choice === "dark";
-        // With no choice yet (or the old "system" one), start light or dark to match the computer.
-        var systemDark = matchMedia("(prefers-color-scheme: dark)").matches;
-        root.dataset.theme = fixed ? choice : systemDark ? "dark" : "light";
+        // Dark unless Custom is chosen (an old Light, Sage, or System choice also lands on Dark).
+        root.dataset.theme = "dark";
         if (choice !== "custom") return;
 
         // Custom colors: same rules as src/customColors.ts (luminance, dark background, button text).
@@ -51,8 +49,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-Bh-7ixyR.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-BzXrfcUN.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-IsJHRdMS.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-Ccn-mEyk.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -185,12 +183,6 @@
         </p>
         <div id="custom-color-fields" class="custom-color-fields"></div>
         <p id="custom-color-warning" class="custom-color-warning" role="status" aria-live="polite"></p>
-        <div class="custom-presets">
-          <span>Start from:</span>
-          <button type="button" class="goal-chip" data-preset="light">☀️ Light</button>
-          <button type="button" class="goal-chip" data-preset="sage">🌿 Sage</button>
-          <button type="button" class="goal-chip" data-preset="dark">🌙 Dark</button>
-        </div>
       </details>
 
       <section id="customize-panel" class="card background-panel" aria-labelledby="customize-heading" hidden>
@@ -208,14 +200,6 @@
         <h3 class="background-subheading">Colors</h3>
         <fieldset class="theme-picker">
           <legend class="visually-hidden">Color theme</legend>
-          <label class="theme-option" title="Light">
-            <input type="radio" name="theme" value="light" />
-            <span><span aria-hidden="true">☀️</span> Light</span>
-          </label>
-          <label class="theme-option" title="Sage: a medium green">
-            <input type="radio" name="theme" value="sage" />
-            <span><span aria-hidden="true">🌿</span> Sage</span>
-          </label>
           <label class="theme-option" title="Dark">
             <input type="radio" name="theme" value="dark" />
             <span><span aria-hidden="true">🌙</span> Dark</span>
