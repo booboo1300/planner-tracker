@@ -49,8 +49,8 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/planner-tracker/assets/index-BpkX38U2.js"></script>
-    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-Cvwv887t.css">
+    <script type="module" crossorigin src="/planner-tracker/assets/index-ClgiH7rL.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-tracker/assets/index-Boh8l-3s.css">
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
@@ -383,13 +383,18 @@
             </label>
             <label class="field">
               <span>Class</span>
-              <input
-                id="course-input"
-                type="text"
-                placeholder="e.g. CS 124"
-                maxlength="40"
-                list="course-options"
-              />
+              <span class="clearable">
+                <input
+                  id="course-input"
+                  type="text"
+                  placeholder="e.g. CS 124"
+                  maxlength="40"
+                  list="course-options"
+                />
+                <button id="course-clear" type="button" class="clear-button" aria-label="Clear the class">
+                  ×
+                </button>
+              </span>
               <datalist id="course-options"></datalist>
             </label>
             <label class="field">
@@ -402,6 +407,15 @@
             <button type="submit" class="add-button">Add assignment</button>
           </div>
         </form>
+        <button
+          id="quick-add"
+          type="button"
+          class="quick-add"
+          aria-label="Add an assignment"
+          title="Add an assignment"
+        >
+          ➕
+        </button>
 
         <!-- Plant, timer, and stats fold into one-line rows so the assignment list sits higher up. -->
         <div class="study-row">
