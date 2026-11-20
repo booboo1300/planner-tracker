@@ -382,9 +382,16 @@
               <input id="title-input" type="text" placeholder="e.g. MP1" maxlength="100" />
             </label>
             <label class="field">
-              <span>Class</span>
+              <span id="course-label">Class</span>
               <span class="clearable">
-                <input id="course-input" type="text" placeholder="e.g. CS 124" maxlength="40" />
+                <!-- Named by "Class" only; otherwise the × inside this label makes it "Class Clear the class". -->
+                <input
+                  id="course-input"
+                  aria-labelledby="course-label"
+                  type="text"
+                  placeholder="e.g. CS 124"
+                  maxlength="40"
+                />
                 <button id="course-clear" type="button" class="clear-button" aria-label="Clear the class">
                   ×
                 </button>
